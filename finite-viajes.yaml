@@ -1,0 +1,18 @@
+traffic:
+  mode: "finite"
+  endpoint: "/status"
+  count: 20
+  sleep: 0.1
+
+display:
+  show_progress: true
+  quiet_mode: false
+  response_view: "extract"
+  extract_regex: '"name":\s*"([^"]+)"'
+
+
+analysis:
+  expected_responses: [{"name": "travels.uk"}]
+  statistics:
+    - "success_rate"
+    - "response_distribution"

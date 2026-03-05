@@ -1,0 +1,27 @@
+traffic:
+  mode: "mix"
+  pattern: "round-robin"
+  count: 20
+  sleep: 0.1
+  items:
+  - name: "mobile"
+    endpoint: "/travels/Madrid"
+    headers:
+      default: {"device": "mobile"}
+  - name: "desktop"
+    endpoint: "/travels/Madrid"
+    headers:
+      default: {"device": "desktop"}
+
+display:
+  show_progress: true
+  quiet_mode: false
+  response_view: "extract"
+  extract_regex: '(?<=airline":")[^"]+|(?<=airline": ")[^"]+|(?<=error":")[^"]+|(?<=error": ")[^"]+'
+
+
+analysis:
+  expected_responses: ["Red Airlines"]
+  statistics:
+    - "success_rate"
+    - "response_distribution"
